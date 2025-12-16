@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Parallax Dynamiczny</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Sekcja z wideo */
+    .parallax-video {
+      position: relative;
+      height: 100vh;       /* pełny ekran */
+      overflow: hidden;
+    }
+
+    .parallax-video video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      transform: translateY(0);
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    /* Sekcja treści pod wideo */
+    .content {
+      background: #f5f5f5;
+      padding: 100px 20px;
+      box-shadow: 0 -20px 30px rgba(0,0,0,0.3);
+    }
+    .content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sekcja z wideo -->
+  <section class="parallax-video" id="videoSection">
+    <video autoplay muted loop playsinline id="bgVideo">
+      <source src="2.mp4" type="video/mp4" />
+      Twoja przeglądarka nie wspiera wideo HTML5.
+    </video>
+    <div class="overlay">
+      <h1>Parallax Video</h1>
+    </div>
+  </section>
+
+  <!-- Sekcja treści -->
+  <section class="content" id="contentSection">
+    <h2>Sekcja pod wideo</h2>
+    <p>
+      Na początku wideo jest w pełni widoczne. Dopiero gdy przewijasz stronę,
+      sekcja zaczyna je zasłaniać, a wideo przesuwa się wolniej niż treść.
+      Dzięki dynamicznemu obliczaniu przesunięcia efekt działa proporcjonalnie
+      do wysokości wideo.
+    </p>
+  </section>
+
+  <section class="content">
+    <h2>Kolejna sekcja</h2>
+    <p>
+      Dodaj więcej treści, aby zobaczyć efekt paralaksy w pełni.
+    </p>
+  </section>
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const videoSection = document.getElementById('videoSection');
+
+    window.addEventListener('scroll', () => {
+      const rect = videoSection.getBoundingClientRect();
+      const videoHeight = videoSection.offsetHeight;
+
+      // ile pikseli sekcji zostało przewinięte w górę
+      const scrolledInside = -rect.top;
+
+      // proporcja przewinięcia od 0 do 1
+      let progress = scrolledInside / videoHeight;
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+
+      // przesunięcie wideo: np. do połowy jego wysokości
+      const offset = videoHeight * 0.5 * progress;
+
+      video.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
+</body>
+</html>

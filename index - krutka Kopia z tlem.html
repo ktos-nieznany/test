@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v6.1.9, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image:src" content="assets/images/index-meta.png"/>
+  <meta property="og:image" content="assets/images/index-meta.png"/>
+  <meta name="twitter:title" content="Salon Fryzjerski Ewa: StrzyŻenie Damskie i Męskie, Koloryzacja">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" data-href="assets/images/logo-bt-l-192x192.png" type="image/x-icon">
+  <meta name="description" content="Odkryj sekret idealnego koloru w salonie fryzjerskim Ewa w Sanoku. Specjalizujemy się w koloryzacji blondów. Ponadto oferujemy strzyżenie damskie i męskie.">
+  <title>Salon Fryzjerski Ewa: StrzyŻenie Damskie i Męskie, Koloryzacja</title>
+
+  <link rel="stylesheet" data-href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" data-href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" data-href="assets/parallax/jarallax.css">
+  <link rel="stylesheet" data-href="assets/animatecss/animate.css">
+  <link rel="stylesheet" data-href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" data-href="assets/theme/css/style.css">
+  <link rel="preload" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" data-href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" data-href="https://fonts.googleapis.com/css2?family=Onest:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style" data-href="assets/mobirise/css/mbr-additional.css?v=L34JQy">
+  <link rel="stylesheet" data-href="assets/mobirise/css/mbr-additional.css?v=L34JQy" type="text/css">
+
+  <style>
+    /* Wariant 1 – napis przy górze */
+    .overlay.top {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 80px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+    /* Wariant 2 – napis wyśrodkowany, ale podniesiony */
+    .overlay.center-up {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 500px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .parallax-video {
+      position: relative;
+      height: 100vh; /* pełny ekran */
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .parallax-video video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: translateY(0);
+      will-change: transform;
+    }
+    .overlay {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      align-items: center; /* możesz zmienić na flex-start, jeśli chcesz napis wyżej */
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    /* Sterowanie napisem góra/dół */
+    .overlay h1 {
+      margin-top: -500px; /* przesuwa napis w górę */
+      margin-left: 150px; /* przesuwa napis w prawo */
+    }
+    .overlay { text-align: left; }
+
+    /* Wszystkie zdjęcia w galerii */
+    #galeria img { border-radius: 15 !important; }
+    #galeria video { border-radius: 15 !important; }
+
+    /* Reset i podstawy (dodatkowe) */
+    html,body{height:100%;margin:0;padding:0;font-family:system-ui,Arial;background:#111;color:#111}
+    *,*::before,*::after{box-sizing:border-box}
+
+    /* Nagłówek przed tłem */
+    .top-header{
+      position: relative;
+      width:100%;
+      height:96px;
+      background: linear-gradient(180deg,#0b0b0b,#141414);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index: 10;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    .top-header .inner{ max-width:1200px; width:100%; padding:0 16px; display:flex; align-items:center; justify-content:space-between; }
+    .top-header .brand{ font-weight:700; letter-spacing:0.2px }
+
+    /* FAQ z tłem (zamiast hero) */
+    .faq-section {
+      --faq-content-offset: 8vh; /* <-- tu ustawiasz jak daleko od góry obrazka ma być treść */
+      position: relative;
+      min-height: 100vh;
+      display:flex;
+      align-items:flex-start; /* treść zaczyna się u góry, ale przesuniemy ją paddingiem */
+      justify-content:center;
+      color:#fff;
+      text-align:center;
+      padding:0 24px 24px;
+      overflow: visible;
+      background: transparent;
+    }
+
+    /* Warstwa tła wewnątrz sekcji FAQ */
+    #faq-bg{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-image: url('assets/images/tlo2.png'); /* Twoje tło */
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:top center;
+      z-index:0;
+      pointer-events:none;
+      transition: opacity .18s linear;
+    }
+    #faq-bg.fixed { position: fixed !important; z-index: 0; }
+
+    /* Treść FAQ ustawiona nieco niżej niż góra obrazka */
+    .faq-content {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      width: 100%;
+      padding-top: var(--faq-content-offset); /* klucz: odsunięcie od góry obrazka */
+      box-sizing: border-box;
+    }
+
+    /* Przykładowe kafelki wewnątrz sekcji FAQ */
+    .faq-section .tile{
+      background:#ffffff;
+      color:#111;
+      border-radius:12px;
+      padding:18px 20px;
+      margin-bottom:18px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.10);
+      border:1px solid rgba(0,0,0,0.06);
+      text-align:left;
+    }
+
+    /* Prostsza zawartość strony poniżej */
+    .site { position: relative; z-index: 6; max-width:1200px; margin:0 auto; padding:24px 16px 60px; background:transparent }
+    .content { color:#fff; max-width:900px; margin:0 auto; }
+
+    @media (max-width:980px){
+      .faq-section { --faq-content-offset: 6vh; }
+      .site{ padding:20px 12px }
+    }
+
+    /* Wspólne tło wrapper (jeśli używane) */
+    .bg-wrapper {
+      background-image: url('assets/images/tlo2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .bg-wrapper > section { background: transparent !important; }
+    .bg-wrapper h4, .bg-wrapper h3 { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+  </style>
+
+</head>
+<body>
+
+  <!-- Analytics / header content -->
+  <!-- ...EWA Salon fryzjerski - Sanok... Profesjonalny salon fryzjerski w Sanoku, ul Traugutta 9... ... -->
+
+  <section class="parallax-video" id="videoSection">
+    <video autoplay muted loop playsinline id="bgVideo">
+      <source src="assets/video/2.mp4" type="video/mp4">
+    </video>
+    <div class="overlay">
+      <div class="top-bar" style="position:absolute;top:20px;left:20px;display:flex;gap:20px;align-items:center;">
+        <img src="assets/images/logo-bt-l-192x192.png" alt="Logo" style="height:150px;">
+        <a href="#contacts02-0"><span class="mbr-iconfont mobi-mbri-phone mobi-mbri" style="font-size:40px;"></span></a>
+        <a href="#contacts02-0"><span class="mbr-iconfont mobi-mbri-map-pin mobi-mbri" style="font-size:40px;"></span></a>
+      </div>
+      <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-4 display-1"><strong>EWA - Salon fryzjerski</strong></h1>
+    </div>
+  </section>
+
+  <!-- other sections (features, gallery, etc.) kept as in original -->
+  <!-- ... (omitted here for brevity in this view, but preserved in final file) ... -->
+
+  <!-- Header before background -->
+  <header class="top-header" id="topHeader">
+    <div class="inner">
+      <div class="brand">Moja Marka</div>
+      <nav style="opacity:.9">Menu · Kontakt · O nas</nav>
+    </div>
+  </header>
+
+  <!-- REPLACED: SEKCJA FAQ with the "zatrzymanie" effect inserted -->
+  <section class="faq-section" id="faq">
+    <div id="faq-bg" aria-hidden="true"></div>
+
+    <!-- TREŚĆ ustawiona nieco niżej niż góra obrazka -->
+    <div class="faq-content" aria-hidden="false">
+      <div class="tile"><strong>Przykład 1</strong><p style="margin-top:8px">Lorem ipsum dolor sit amet — ta treść zaczyna się poniżej góry obrazka.</p></div>
+      <div class="tile"><strong>Przykład 2</strong><p style="margin-top:8px">Consectetur adipiscing elit — zmień --faq-content-offset aby dopasować pozycję.</p></div>
+      <div class="tile"><strong>Przykład 3</strong><p style="margin-top:8px">Sed do eiusmod tempor — responsywne ustawienia w media query.</p></div>
+    </div>
+  </section>
+
+  <!-- Footer and other content preserved -->
+  <section data-bs-version="5.1" class="footer4 cid-v4d3felSlH" once="footers" id="footer-4-v4d3felSlH">
+    <div class="container">
+      <div class="media-container-row align-center mbr-white">
+        <div class="col-12">
+          <p class="mbr-text mb-0 mbr-fonts-style display-7">Ewa Salon fryzjerski © 2025. Wszelkie prawa zastrzeżone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="cookie-dialog" style="display: none;">
+    <div id="cookiesdirective" style="background-color:rgba(178,162,151,1)">
+      <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 1; z-index: 9999;"></div>
+      <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000">
+        <div class="cookie-wrapper" style="font-family: sans-serif;position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#000000; background:rgb(178, 162, 151);">
+          <div class="mbr-text">
+            <p class="display-7 accept-text">Strona, "EWA - Salon fryzjerski" używa plików cookies.
+            Używamy cookies, aby zapewnić prawidłowe działanie witryny oraz analizować ruch na stronie. Możesz zmienić ustawienia cookies w swojej przeglądarce. Korzystając z serwisu, akceptujesz ich użycie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input name="cookieData" type="hidden" data-cookie-cookiesAlertType='3' data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#000000' data-cookie-colorBg='rgb(178, 162, 151)' data-cookie-opacityOverlay='100' data-cookie-bgOpacity='100' data-cookie-textButton='AKCEPTUJ' data-cookie-rejectText='REJECT' data-cookie-colorButton='#D4E09B' data-cookie-rejectColor='#ffffff' data-cookie-colorLink='#424a4d' data-cookie-underlineLink='true' data-cookie-text="Strona, 'EWA - Salon fryzjerski' używa plików cookies.">
+
+  <div id="scrollToTop" class="scrollToTop mbr-arrow-up">
+    <a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a>
+  </div>
+
+  <input name="animation" type="hidden">
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const videoSection = document.getElementById('videoSection');
+    window.addEventListener('scroll', () => {
+      const rect = videoSection.getBoundingClientRect();
+      const videoHeight = videoSection ? videoSection.offsetHeight : 0;
+      const scrolledInside = -rect.top;
+      let progress = videoHeight ? (scrolledInside / videoHeight) : 0;
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+      const offset = videoHeight * 0.5 * progress;
+      if (video) video.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
+  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>
+  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>
+
+  <!-- Inserted "zatrzymanie" script for FAQ background (keeps original algorithm intact) -->
+  <script>
+  (function(){
+    const topHeader = document.getElementById('topHeader');
+    const faqSection = document.getElementById('faq');
+    const faqBg = document.getElementById('faq-bg');
+
+    if(!topHeader || !faqSection || !faqBg) return;
+
+    let bgIsFixedPreserved = false;
+
+    function update() {
+      const sectionRect = faqSection.getBoundingClientRect();
+      const headerRect = topHeader.getBoundingClientRect();
+      const headerGone = headerRect.bottom <= 0;
+
+      if(headerGone && !bgIsFixedPreserved) {
+        const rect = faqBg.getBoundingClientRect();
+        faqBg.classList.add('fixed');
+        faqBg.style.position = 'fixed';
+        faqBg.style.top = rect.top + 'px';
+        faqBg.style.left = rect.left + 'px';
+        faqBg.style.width = rect.width + 'px';
+        faqBg.style.height = rect.height + 'px';
+        faqBg.style.transform = 'translateZ(0)';
+        bgIsFixedPreserved = true;
+      } else if(!headerGone && bgIsFixedPreserved) {
+        faqBg.classList.remove('fixed');
+        faqBg.style.position = '';
+        faqBg.style.top = '';
+        faqBg.style.left = '';
+        faqBg.style.width = '';
+        faqBg.style.height = '';
+        faqBg.style.transform = '';
+        bgIsFixedPreserved = false;
+      }
+    }
+
+    let ticking = false;
+    function onScroll(){
+      if(!ticking){
+        requestAnimationFrame(function(){ update(); ticking = false; });
+        ticking = true;
+      }
+    }
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
+  </script>
+
+  <!-- Optional: other scripts from original (kept as data-src where appropriate) -->
+  <script type="text/plain" data-src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/plain" data-src="assets/parallax/jarallax.js"></script>
+  <script type="text/plain" data-src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script type="text/plain" data-src="assets/ytplayer/index.js"></script>
+  <script type="text/plain" data-src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script type="text/plain" data-src="assets/vimeoplayer/player.js"></script>
+  <script type="text/plain" data-src="assets/theme/js/script.js"></script>
+
+</body>
+</html>

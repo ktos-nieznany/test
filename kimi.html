@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo – parallax z twoim tłem</title>
+  <style>
+    /* ==========  ogólne  ========== */
+    body,html{margin:0;height:100%;font-family:system-ui,Arial}
+    section{min-height:100vh;display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;text-shadow:0 1px 3px #000}
+
+    /* dwie sekcje „wypełniacze” – tylko po to, by coś przewijać */
+    .s1{background:#222}
+    .s2{background:#444}
+
+    /* ==========  WARSTWA TŁA (twoje tlo2.png)  ========== */
+    #faq-bg-layer{
+      position:absolute;
+      top:0;left:0;width:100%;height:100vh;
+      background-image:url("assets/images/tlo2.png"); /* <-- twój plik */
+      background-size:cover;
+      background-position:center;
+      will-change:transform;
+      z-index:-1;
+    }
+
+    /* ==========  KONTENER FAQ  ========== */
+    #faq-wrapper{
+      position:relative;
+      min-height:100vh;
+      color:#fff;
+    }
+    #faq-wrapper .container{position:relative;z-index:1;max-width:800px;margin:auto;padding:4rem 1rem}
+    #faq-wrapper h2,#faq-wrapper h3{text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  </style>
+</head>
+
+<body>
+  <!-- sekcja 1 (czarna) -->
+  <section class="s1">Przewiń w dół ↓</section>
+
+ 
+
+  <!-- sekcja 3: FAQ z parallaxem -->
+  <div id="faq-wrapper">
+    <div id="faq-bg-layer"></div>
+
+    <section id="faq-3-v4d3feiXj3">
+      <div class="container">
+        <h2>Często Pytacie</h2>
+
+        <div class="item">
+          <h3>Jakie są ceny?</h3>
+          <p>Ceny zależą od długości włosów – zadzwoń, podamy wycenę.</p>
+        </div>
+
+        <div class="item">
+          <h3>Jak zarezerwować wizytę?</h3>
+          <p>Rezerwacja tylko telefoniczna.</p>
+        </div>
+
+        <div class="item">
+          <h3>Czy wykonujecie strzyżenie męskie?</h3>
+          <p>Tak, dopasowujemy fryzurę do każdego.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- sekcja 4 – tylko po to, by było czym przewijać dalej -->
+  <section style="background:#666">Koniec strony – twoje tło zostało wyżej.</section>
+
+  <!-- ==========  JS: parallax + stop  ========== -->
+  <script>
+    (function(){
+      const wrapper = document.getElementById('faq-wrapper');
+      const bg      = document.getElementById('faq-bg-layer');
+      if(!wrapper || !bg) return;
+
+      function update(){
+        const rect   = wrapper.getBoundingClientRect();
+        const scrolled = -rect.top;   // ile sekcji weszło pod górę okna
+
+        if(scrolled >= 0){            // góra sekcji dotyka / przekracza górę viewportu
+          bg.style.transform = 'translateY(' + scrolled + 'px)';
+          /* od tego momentu tło „stoi”, a kafelki dalej schodzą */
+        }else{
+          bg.style.transform = 'translateY(0)';   // jeszcze przed – normalny przesuw
+        }
+      }
+      window.addEventListener('scroll', update, {passive: true});
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

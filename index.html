@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Salon Fryzjerski Ewa</title>
+  <link rel="shortcut icon" data-href="assets/images/logo-bt-l-192x192.png" type="image/x-icon">
+
+  <!-- Główne style (zachowane) -->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=L34JQy">
+
+  <style>
+    /* Reset i podstawy */
+    html,body{height:100%;margin:0;padding:0;font-family:system-ui,Arial;background:transparent;color:#111}
+    *,*::before,*::after{box-sizing:border-box}
+
+    /* Parallax video */
+    .parallax-video { position: relative; height: 100vh; overflow: hidden; margin: 0; padding: 0; z-index: 0; }
+    .parallax-video video { position: absolute; top: 0; left: 0; width: 100%; height: auto; min-height: 100%; object-fit: cover; z-index: 0; transform: translateY(0); will-change: transform; }
+
+    /* Overlay nad wideo */
+    .overlay { position: relative; z-index: 2; height: 100%; display:flex; align-items:center; justify-content:center; color:#fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
+    .overlay h1 { margin-top: -500px; margin-left: 150px; text-align:left; }
+
+    /* Nagłówek */
+    .top-header{ position: relative; width:100%; height:96px; background: linear-gradient(180deg,#0b0b0b,#141414); color:#fff; display:flex; align-items:center; justify-content:center; z-index: 20; box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+    .top-header .inner{ max-width:1200px; width:100%; padding:0 16px; display:flex; align-items:center; justify-content:space-between; }
+    .top-header .brand{ font-weight:700; letter-spacing:0.2px }
+
+    /* Sekcja "U nas czekają na Ciebie" */
+    #u-nas-czekaja {
+      position: relative;
+      z-index: 15;
+      padding: 60px 0;
+      background-color: #1a1a1a;
+      background-image: url('assets/images/1-878x878.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: #fff;
+    }
+    #u-nas-czekaja::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 14;
+      pointer-events: none;
+    }
+    #u-nas-czekaja .container { position: relative; z-index: 16; }
+    .content-head .mbr-section-head { margin-bottom: 1rem; color:#fff; }
+    .features-image .item-img img { width: 100%; display:block; border-radius:12px; }
+    .features-image .item-content { padding: 0.5rem 1rem; color:#fff; }
+
+    /* Instagram gallery (miejsce dla Elfsight widget) */
+    #galeria { position: relative; z-index: 12; background: #fff; color: #000; }
+    #galeria .ig-title { text-align:center; margin-bottom:24px; color:#fff; }
+
+    /* FAQ i tło FAQ */
+    .faq-section { --faq-content-offset: 8vh; position: relative; min-height: 100vh; display:flex; align-items:flex-start; justify-content:center; color:#fff; text-align:center; padding:0 24px 24px; overflow: visible; background: transparent; z-index: 10; }
+    #faq-bg{ position:absolute; top:0; left:0; width:100%; height:100%; background-image: url('assets/images/tlo2.png'); background-repeat:no-repeat; background-size:cover; background-position:top center; z-index:0; pointer-events:none; transition: opacity .18s linear; }
+    #faq-bg.fixed { position: fixed !important; z-index: 0; }
+    .faq-content { position: relative; z-index: 2; max-width: 980px; width: 100%; padding-top: var(--faq-content-offset); box-sizing: border-box; }
+    .faq-section .tile{ background:#ffffff; color:#000; border-radius:8px; padding:18px 20px; margin-bottom:18px; box-shadow:0 10px 24px rgba(0,0,0,0.10); border:1px solid rgba(0,0,0,0.06); text-align:left; }
+
+    /* Stopka */
+    .footer4 { z-index: 5; position: relative; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+    /* Pasek górny */
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* lewa grupa (logo+ikony) i prawa grupa (QR) */
+      gap: 20px;
+      z-index: 11;
+    }
+
+    /* Logo + ikony razem po lewej */
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* odstęp między logo a ikonami */
+    }
+
+    /* Linki z ikonami */
+    .top-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Ikony fontowe */
+    .mbr-iconfont {
+      font-size: 40px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    /* Logo i QR */
+    .top-logo { height: 150px; width: auto; }
+    .top-qr { height: 100px; width: 100px; object-fit: contain; }
+
+    /* Responsywność */
+    @media (max-width: 700px) {
+      .top-logo { height: 80px; }
+      .top-qr { height: 80px; width: 80px; }
+      .mbr-iconfont { font-size: 28px; }
+    }
+	
+	.mbr-iconfont {
+  font-family: 'Moririse2' !important; /* lub 'Morrise2' jeśli tak się nazywa lokalna czcionka ikon */
+  font-size: 40px;
+  color: #f2e365;
+  line-height: 1;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.mobi-mbri-phone:before {
+  font-family: 'Moririse2' !important;
+  content: "\e95b" !important;
+}
+.mobi-mbri-map-pin:before {
+  font-family: 'Moririse2' !important;
+  content: "\e94c" !important;
+}
+
+
+  </style>
+<link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+
+<style>
+    :root{
+      --topbar-top: 20px;
+      --side-gap: 20px;
+      --logo-height: 150px;
+      --qr-size: 150px;
+      --icons-size: 40px;
+      --topbar-gap: 20px;
+      --title-size: 56px;
+      --title-color: #fff;
+	  --title-vertical: 0%; /* pozycja tytułu w % (0% = góra, 50% = środek, 100% = dół) */
+      --title-offset: 0px;   /* dodatkowe przesunięcie w px (ujemne = w górę, dodatnie = w dół) */
+	  --title-max-width: 1100px;
+      --title-padding-sides: 20px;
+    }
+
+    /* Sekcja i wideo */
+    .parallax-video {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px; /* dopasuj wysokość */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* sekcja nie ma czarnego tła */
+}
+
+.parallax-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  background: transparent; /* overlay nie zasłania wideo */
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* usuń background – pasek jest przezroczysty */
+}
+
+.mbr-section-title {
+  margin-top: 20px;
+  color: #fff; /* napis biały, bez tła */
+  /* brak background – napis jest przezroczysty */
+}
+
+    #bgVideo{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Overlay (treść nad wideo) */
+    .parallax-video .overlay{
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 40px calc(var(--side-gap));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      pointer-events: none;
+    }
+
+    /* Top bar: logo left, icons center, QR right */
+    .top-bar{
+      position: absolute;
+      top: var(--topbar-top);
+      left: var(--side-gap);
+      right: var(--side-gap);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--topbar-gap);
+      pointer-events: auto;
+      z-index: 10;
+    }
+    .top-left, .top-center, .top-right { display:flex; align-items:center; }
+
+    .top-left { justify-content:flex-start; }
+    .top-logo{ height: var(--logo-height); width: auto; display:block; }
+
+    .top-center{
+      gap: 18px;
+      justify-content:center;
+    }
+    .top-center a { color: #fff; text-decoration:none; display:inline-flex; align-items:center; }
+    .top-center .mbr-iconfont { font-size: var(--icons-size); color: #fff; }
+
+    .top-right { justify-content:flex-end; }
+    .top-qr{
+      height: var(--qr-size);
+      width: var(--qr-size);
+      object-fit: contain;
+      display:block;
+      border-radius: 0px;
+      background: transparent;
+      padding: 0px;
+      box-shadow: none;
+    }
+
+    /* Główny tytuł */
+    .parallax-video .mbr-section-title {
+  position: absolute;
+  left: 10%;
+  top: var(--title-vertical);
+  transform: translate(-50%, calc(-50% + var(--title-offset)));
+  /* pozostałe style tytułu */
+  margin: 0;
+  color: var(--title-color, #fff);
+  font-size: var(--title-size, 56px);
+  text-align: center;
+  max-width: var(--title-max-width);
+  width: calc(100% - (var(--title-padding-sides) * 2));
+  z-index: 6;
+}
+
+    /* Małe ekrany: top-bar w rzędach, mniejsze logo/QR */
+    @media (max-width: 900px){
+      :root{
+        --logo-height: 110px;
+        --qr-size: 110px;
+        --icons-size: 34px;
+        --title-size: 40px;
+      }
+    }
+    @media (max-width: 600px){
+      .top-bar{
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        padding: 6px;
+      }
+      .top-left, .top-right { flex: 0 0 100%; justify-content:center; }
+      .top-center { order: 3; width: 100%; justify-content:center; }
+      :root{
+        --logo-height: 80px;
+        --qr-size: 80px;
+        --icons-size: 28px;
+        --title-size: 28px;
+        --topbar-top: 12px;
+        --side-gap: 12px;
+      }
+      .parallax-video{ min-height: 360px; }
+    }
+  </style>
+<style>
+    /* Reguły ograniczone do tej sekcji */
+    #news-1-v4d3fel0JQ {
+      background-color: #b2a297;
+      color: #000;
+    }
+    /* Usuń padding tylko wewnątrz tej sekcji (jeśli trzeba) */
+    #news-1-v4d3fel0JQ,
+    #news-1-v4d3fel0JQ .container,
+    #news-1-v4d3fel0JQ .container-fluid {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    /* Drobne formatowanie tekstu tylko tutaj */
+    #news-1-v4d3fel0JQ p { margin: 0; line-height: 1.4; color: #000; }
+
+img.top-qr {
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+  </style>
+
+
+</head>
+<body>
+<section id="news-1-v4d3fel0JQ" class="features03 cid-v4d3fel0JQ">
+  
+
+  <!-- Analytics -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <p>EWA Salon fryzjerski - Sanok. Profesjonalny salon fryzjerski w Sanoku, ul. Traugutta 9. Strzyżenie damskie i męskie, koloryzacja, modelowanie i upięcia okolicznościowe.</p>
+		<p>Zadzwoń: 609960784</p>
+      </div>
+    </div>
+  </div>
+  <!-- /Analytics -->
+</section>
+
+
+
+
+  <!-- Parallax video -->
+  <section class="parallax-video" id="videoSection" aria-label="Nagłówek strony">
+  
+
+  <video autoplay muted loop playsinline id="bgVideo" aria-hidden="true">
+    <source src="assets/video/2.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+  <div class="top-bar" role="navigation" aria-label="Górny pasek">
+    <!-- Lewa część: logo + ikony -->
+    <div class="top-left" style="display:flex;align-items:center;gap:20px;">
+      <a href="/" aria-label="Strona główna">
+        <img src="assets/images/logo-bt-l-192x192.png" alt="Logo" class="top-logo" style="height:150px;">
+      </a>
+      <!-- Ikony obok logo -->
+      <a href="#contacts02-0" class="top-icon" aria-label="Zadzwoń">
+        <span class="mbr-iconfont mobi-mbri-phone mobi-mbri" style="font-size:40px;"></span>
+      </a>
+      <a href="#contacts02-0" class="top-icon" aria-label="Mapa">
+        <span class="mbr-iconfont mobi-mbri-map-pin mobi-mbri" style="font-size:40px;"></span>
+      </a>
+    </div>
+
+    <!-- Prawa część: QR kod -->
+    <div class="top-right">
+      <a href="https://1277d3236ce24b599d58be512e830c43.elf.site" target="_blank" rel="noopener" aria-label="Odwiedź stronę widgetu">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F1277d3236ce24b599d58be512e830c43.elf.site&size=100x100"
+             alt="QR kod" class="top-qr" style="height:100px;width:100px;">
+      </a>
+    </div>
+  </div>
+
+  <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-4 display-1 animate__animated animate__fadeInUp">
+    <strong>EWA - Salon fryzjerski</strong>
+  </h1>
+</div>
+
+</section>
+
+
+  <!-- Sekcja "U nas czekają na Ciebie" -->
+  <section data-bs-version="5.1" class="features03 cid-v4d3fel0JQ" id="news-1-v4d3fel0JQ">
+  
+  
+  <div class="container-fluid">
+    <div class="row justify-content-center mb-5">
+      <div class="col-12 content-head">
+        <div class="mbr-section-head">
+          <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>U nas czekają na Ciebie</strong></h4>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="item features-image col-12 col-md-6 col-lg-3 active">
+        <div class="item-wrapper">
+          <div class="item-img mb-3">
+            <img data-src="assets/images/1-878x878.png" alt="Mobirise Website Builder" title="">
+          </div>
+          <div class="item-content align-left">
+            <h5 class="item-title mbr-fonts-style mt-0 mb-2 display-5">
+              <div style="text-align: center;">
+              <strong>Nowa Technika Koloryzacji</strong>
+              </div>
+            </h5>
+			<div style="text-align: center;">
+            <p class="mbr-text mbr-fonts-style mb-3 display-7">Odkryj rewolucyjną metodę na idealny kolor, która doda Twoim włosom blasku i głębi.</p>
+			</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="item features-image col-12 col-md-6 col-lg-3">
+        <div class="item-wrapper">
+          <div class="item-img mb-3">
+            <img data-src="assets/images/4-878x878.png" alt="Mobirise Website Builder" title="" data-slide-to="1" data-bs-slide-to="1">
+          </div>
+          <div class="item-content align-left">
+            <h5 class="item-title mbr-fonts-style mb-2 mt-0 display-5">
+			<div style="text-align: center;">
+              <strong>Aktualne Trendy w Strzyżeniu</strong>
+			  </div>
+            </h5>
+			<div style="text-align: center;">
+            <p class="mbr-text mbr-fonts-style mb-3 display-7">Poznaj najmodniejsze fryzury sezonu, które podkreślą Twoją urodę i osobowość.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item features-image col-12 col-md-6 col-lg-3">
+        <div class="item-wrapper">
+          <div class="item-img mb-3">
+            <img data-src="assets/images/10-878x492.jpg" alt="Mobirise Website Builder" title="" data-slide-to="2" data-bs-slide-to="2">
+          </div>
+          <div class="item-content align-left">
+            <h5 class="item-title mbr-fonts-style mb-2 mt-0 display-5">
+			<div style="text-align: center;">
+              <strong>Sekrety Pięknych Włosów</strong>
+			  </div>
+            </h5>
+			<div style="text-align: center;">
+            <p class="mbr-text mbr-fonts-style mb-3 display-7">Dowiedz się, jak dbać o włosy, by były zdrowe, lśniące i pełne życia przez cały rok.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item features-image col-12 col-md-6 col-lg-3">
+        <div class="item-wrapper">
+          <div class="item-img mb-3">
+            <img data-src="assets/images/3-878x492.jpg" alt="Mobirise Website Builder" title="" data-slide-to="2" data-bs-slide-to="2">
+          </div>
+          <div class="item-content align-left">
+            <h5 class="item-title mbr-fonts-style mb-2 mt-0 display-5">
+			<div style="text-align: center;">
+              <strong>Ewa Salon Poleca</strong>
+			  </div>
+            </h5>
+			<div style="text-align: center;">
+            <p class="mbr-text mbr-fonts-style mb-3 display-7">Sprawdź nasze specjalne oferty i pakiety usług, które sprawią, że poczujesz się wyjątkowo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-bs-version="5.1" class="image02 cid-v4d3feiGCc mbr-parallax-background" id="image-13-v4d3feiGCc">
+    
+    
+    <div class="container-fluid">
+        <div class="row"></div>
+    </div>
+</section>
+
+ <!-- GALLERY SECTION -->
+<!-- Elfsight Instagram Feed Script -->
+<div class="tagembed-widget" style="width:100%;height:100%;overflow:auto;" data-widget-id="310737" data-website="1"></div><script src="https://widget.tagembed.com/embed.min.js" type="text/javascript"></script>
+
+<section class="gallery-section" id="galeria">
+  <style>
+    /* Proste nadpisanie stylu tytułu widgetu */
+    #galeria .eapps-instagram-feed-title {
+      font-size: 60px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 52px;
+      padding: 20px 10px;
+    }
+  </style>
+
+  <!-- ELFSIGHT WIDGET -->
+  <div
+    class="elfsight-app-1277d323-6ce2-4b59-9d58-be512e830c43"
+    data-elfsight-app-lazy
+  ></div>
+</section>
+
+
+
+
+  <!-- FAQ SECTION (wcześniejszy kod kafelków) -->
+<section id="faq" class="faq-section" aria-labelledby="faq-title" role="region">
+  <style>
+    :root{
+      --container-max: 1200px;
+      --side-gap: 10px;
+      --title-size: 70px;
+      --subtitle-size: 28px;
+      --body-size: 38px;
+      --tile-padding-vertical: 22px;
+      --tile-padding-horizontal: 26px;
+      --tile-radius: 12px;
+      --tile-gap: 20px;
+      --title-gap: 24px; /* odległość nagłówek ↔ kafelki */
+      --faq-bottom-gap: 48px; /* dodatkowy odstęp przed stopką */
+    }
+
+    .faq-section{
+      position: relative;
+      padding: 6px calc(var(--side-gap));
+      box-sizing: border-box;
+      background: transparent;
+      color: #000;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin-bottom: var(--faq-bottom-gap); /* zapewnia miejsce przed stopką */
+    }
+
+    #faq-bg{
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/images/tlo2.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    .faq-container{
+      max-width: var(--container-max);
+      width: calc(100% - (var(--side-gap) * 2));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .faq-title {
+      text-align: center;
+      margin: 8px 0 0;
+      background: transparent;
+    }
+    .faq-title h2{
+      margin: 0;
+      font-size: var(--title-size);
+      line-height: 2;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    .faq-title p{
+      margin: 8px 0 0;
+      font-size: var(--subtitle-size);
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    }
+
+    .faq-list{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--tile-gap);
+      margin-top: var(--title-gap);
+    }
+
+    .faq-list .tile{
+      background: #d6b9af;
+      color: #111;
+      border-radius: var(--tile-radius);
+      padding: var(--tile-padding-vertical) var(--tile-padding-horizontal);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: var(--body-size);
+      line-height: 1.45;
+      width: 100%;
+      box-sizing: border-box;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .faq-list .tile strong{
+      display:block;
+      margin-bottom:10px;
+      font-weight:700;
+      font-size: calc(var(--body-size) + 1px);
+    }
+    .faq-list .tile:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+    }
+
+    /* Responsywność */
+    @media (max-width: 1100px){
+      :root{
+        --container-max: 980px;
+        --title-size: 36px;
+        --body-size: 17px;
+      }
+    }
+    @media (max-width: 700px){
+      :root{
+        --side-gap: 14px;
+        --title-size: 28px;
+        --subtitle-size: 15px;
+        --body-size: 16px;
+        --tile-padding-vertical: 16px;
+        --tile-padding-horizontal: 18px;
+        --title-gap: 16px;
+        --faq-bottom-gap: 32px;
+      }
+      .faq-section{ padding-top: 24px; padding-bottom: 40px; }
+    }
+  </style>
+
+  <div id="faq-bg" aria-hidden="true"></div>
+
+  <div class="faq-container">
+    <div class="faq-title" aria-hidden="false">
+      <h2 id="faq-title">Często pytacie</h2>
+    </div>
+
+    <div class="faq-list" aria-hidden="false">
+      <div class="tile"><strong>Jakie są ceny?</strong><p style="margin-top:8px">Ceny są zróżnicowane w zależności od usługi i długości włosów. Skontaktuj się z nami, aby uzyskać indywidualną wycenę.</p></div>
+      <div class="tile"><strong>Jak zarezerwować wizytę?</strong><p style="margin-top:8px">Rezerwacji można dokonać telefonicznie. Dostosujemy dogodny dla Ciebie termin.</p></div>
+      <div class="tile"><strong>Jakie są Wasze specjalizacje?</strong><p style="margin-top:8px">Specjalizujemy się w strzyżeniu damskim, koloryzacji i stylizacji.</p></div>
+      <div class="tile"><strong>Czy wykonujecie strzyżenie męskie?</strong><p style="margin-top:8px">Tak, oferujemy strzyżenie męskie, dopasowane do indywidualnych potrzeb.</p></div>
+    </div>
+  
+<!-- Sekcja Kontakt i Lokalizacja (bez własnego tła) -->
+  <section data-bs-version="5.1" class="contacts02 map1 cid-v4dNP7im1P" id="contacts02-0">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 content-head">
+          <div class="mbr-section-head mb-5">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Kontakt i Lokalizacja</strong></h3>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="card col-12 col-md-12 col-lg-6">
+          <div class="card-wrapper">
+            <div class="text-wrapper">
+              <ul class="list mbr-fonts-style display-7">
+                <li class="mbr-text item-wrap"><strong>tel. kom:</strong> +48 609960784</li>
+                <li class="mbr-text item-wrap"><br></li>
+                <li class="mbr-text item-wrap"><strong>Adres:</strong> Sanok, Traugutta 9</li>
+                <li class="mbr-text item-wrap"><strong>Salon czynny:</strong></li><li class="mbr-text item-wrap"> wtorek - sobota</li><li class="mbr-text item-wrap"> 9:00 - 17:00</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="map-wrapper col-md-12 col-lg-6">
+          <div class="google-map">
+            <iframe frameborder="0" style="border:0" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470.8374228220342!2d22.20035947986863!3d49.566908116861505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473c6d00568e8103%3A0x6e58893950874195!2sSalon%20fryzjerski%20Ewa%20-%20Ewa%20Kulikowska!5e0!3m2!1spl!2spl!4v1764676379175!5m2!1spl!2spl" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+  
+  </div>
+  
+
+  
+</section>
+
+<!-- Stopka: umieszczona pod kafelkami -->
+<section class="footer4 cid-v4d3felSlH" id="footer-4-v4d3felSlH" aria-labelledby="footer-title">
+  <style>
+    /* Prosty styl stopki, zawsze statycznie pod zawartością */
+    .footer4 {
+      position: relative;
+      z-index: 1;
+      background: #111; /* zmień kolor tła stopki jeśli potrzeba */
+      color: #fff;
+      padding: 2px 0;
+      box-sizing: border-box;
+      clear: both;
+    }
+    .footer4 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+    .footer4 .mbr-text { text-align: center; margin: 0; font-size: 15px; color: rgba(255,255,255,0.9); }
+    @media (max-width:700px){
+      .footer4 { padding: 20px 0; }
+      .footer4 .mbr-text { font-size: 14px; }
+    }
+	/* --- Naprawa widoczności stopki --- */
+
+/* Upewnij się, że tło sekcji FAQ nie przykrywa stopki */
+#faq-bg {
+  position: absolute !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Sekcja FAQ niżej w stacking context */
+.faq-section {
+  position: relative !important;
+  z-index: 1 !important;
+  /* dodatkowy padding na dole, aby stopka nie nachodziła na kafelki */
+  padding-bottom: var(--faq-bottom-gap, 80px) !important;
+}
+
+/* Stopka zawsze nad zawartością */
+.footer4,
+#footer-4-v4d3felSlH {
+  position: relative !important;
+  pointer-events: auto !important;
+  clear: both !important;
+  background: #111 !important;
+}
+
+/* Drobne poprawki czytelności */
+.footer4 .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+.footer4 .mbr-text { text-align: center; margin: 0; font-size: 35px; color: rgb(255, 255, 255) !important; }
+
+/* Jeśli masz elementy fixed z dużym z-indexem, obniż je (przykład) */
+/* .some-overlay { z-index: 5 !important; } */
+
+
+
+
+
+
+  </style>
+
+
+
+  <div class="container">
+    <div class="media-container-row align-center mbr-white">
+      <div class="col-12">
+        <p class="mbr-text mb-0 mbr-fonts-style display-7">Ewa Salon fryzjerski © 2025. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Cookie dialog -->
+  <div id="cookie-dialog" style="display: none;">
+    <div id="cookiesdirective" style="background-color:rgba(178,162,151,1)">
+      <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 1; z-index: 9999;"></div>
+      <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000">
+        <div class="cookie-wrapper" style="font-family: sans-serif;position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#000000; background:rgb(178, 162, 151);">
+          <div class="mbr-text">
+            <p class="display-7 accept-text">Strona, "EWA - Salon fryzjerski" używa plików cookies. Używamy cookies, aby zapewnić prawidłowe działanie witryny oraz analizować ruch na stronie. Możesz zmienić ustawienia cookies w swojej przeglądarce. Korzystając z serwisu, akceptujesz ich użycie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input name="cookieData" type="hidden" data-cookie-cookiesAlertType='3' data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#000000' data-cookie-colorBg='rgb(178, 162, 151)' data-cookie-opacityOverlay='100' data-cookie-bgOpacity='100' data-cookie-textButton='AKCEPTUJ' data-cookie-rejectText='REJECT' data-cookie-colorButton='#D4E09B' data-cookie-rejectColor='#ffffff' data-cookie-colorLink='#424a4d' data-cookie-underlineLink='true' data-cookie-text="Strona, 'EWA - Salon fryzjerski' używa plików cookies.">
+
+  <div id="scrollToTop" class="scrollToTop mbr-arrow-up">
+    <a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a>
+  </div>
+
+  <!-- Parallax video transform script -->
+  <script>
+    const video = document.getElementById('bgVideo');
+    const videoSection = document.getElementById('videoSection');
+    window.addEventListener('scroll', () => {
+      const rect = videoSection.getBoundingClientRect();
+      const videoHeight = videoSection ? videoSection.offsetHeight : 0;
+      const scrolledInside = -rect.top;
+      let progress = videoHeight ? (scrolledInside / videoHeight) : 0;
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+      const offset = videoHeight * 0.5 * progress;
+      if (video) video.style.transform = `translateY(${offset}px)`;
+    });
+  </script>
+
+  <!-- Skrypty cookie -->
+  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>
+  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>
+
+  <!-- Skrypt "zatrzymania" tła dla FAQ (oryginalny algorytm, bez zmian) -->
+<script>
+(function(){
+  const faqSection = document.getElementById('faq');
+  const faqBg = document.getElementById('faq-bg');
+  if(!faqSection || !faqBg) return;
+
+  let bgIsFixedPreserved = false;
+
+  function update(){
+    const sectionRect = faqSection.getBoundingClientRect();
+    // gdy górna krawędź sekcji przesunie się ponad górę viewportu
+    const sectionTopPassed = sectionRect.top <= 0;
+    if(sectionTopPassed && !bgIsFixedPreserved){
+      const rect = faqBg.getBoundingClientRect();
+      faqBg.classList.add('fixed');
+      faqBg.style.position = 'fixed';
+      faqBg.style.top = rect.top + 'px';
+      faqBg.style.left = rect.left + 'px';
+      faqBg.style.width = rect.width + 'px';
+      faqBg.style.height = rect.height + 'px';
+      faqBg.style.transform = 'translateZ(0)';
+      bgIsFixedPreserved = true;
+    } else if(!sectionTopPassed && bgIsFixedPreserved){
+      faqBg.classList.remove('fixed');
+      faqBg.style.position = '';
+      faqBg.style.top = '';
+      faqBg.style.left = '';
+      faqBg.style.width = '';
+      faqBg.style.height = '';
+      faqBg.style.transform = '';
+      bgIsFixedPreserved = false;
+    }
+  }
+
+  let ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){ update(); ticking = false; });
+      ticking = true;
+    }
+  }
+
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+})();
+</script>
+
+
+  <!-- Pozostałe skrypty oryginalne (jeśli chcesz aktywować, zamień type/text/plain na normalne src) -->
+  <script type="text/plain" data-src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/plain" data-src="assets/parallax/jarallax.js"></script>
+  <script type="text/plain" data-src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script type="text/plain" data-src="assets/ytplayer/index.js"></script>
+  <script type="text/plain" data-src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script type="text/plain" data-src="assets/vimeoplayer/player.js"></script>
+  <script type="text/plain" data-src="assets/theme/js/script.js"></script>
+<<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1. Blokada kliknięć w całej sekcji galerii (capture = true)
+    const galeria = document.getElementById("galeria");
+    if (galeria) {
+      galeria.addEventListener("click", function(e) {
+        e.preventDefault();   // zatrzymuje domyślne akcje
+        e.stopPropagation();  // blokuje propagowanie do widgetu
+      }, true); // przechwytywanie w fazie capture
+    }
+
+    // 2. Usuwanie hash (#) z adresu URL, żeby nie przewijało do góry
+    window.addEventListener("hashchange", function() {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    });
+  });
+</script>
+
+</body>
+</html>

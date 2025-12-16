@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obrazek dopasowany szerokością + parallax</title>
+
+  <style>
+    /* podstawy */
+    html,body{margin:0;font-family:system-ui,Arial;background:#111;color:#111}
+
+    /* nagłówek – dokładnie jak u Ciebie */
+    .top-header{
+      position:relative;
+      height:96px;
+      background:linear-gradient(180deg,#0b0b0b,#141414);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+    }
+    .top-header .inner{max-width:1200px;width:100%;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+    .top-header .brand{font-weight:700;letter-spacing:.2px}
+
+    /* sekcja FAQ – obrazek dopasowany szerokością */
+    .faq-section{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:0 24px 24px;
+      color:#fff;
+      text-align:center;
+    }
+    #faq-bg{
+      position:absolute;
+      top:0;left:0;width:100%;height:100%;
+      background-image:url("assets/images/tlo2.png");
+      background-repeat:no-repeat;
+      background-size:100% auto;   /* <-- dopasowanie szerokości, bez rozciągania */
+      background-position:top center;
+      z-index:-1;
+      pointer-events:none;
+      will-change:transform;
+    }
+    #faq-bg.fixed{position:fixed!important;z-index:0}
+    .faq-content{
+      position:relative;
+      z-index:2;
+      max-width:980px;width:100%;
+      padding-top:8vh;
+      box-sizing:border-box;
+    }
+    .tile{
+      background:rgba(255,255,255,0.85);
+      color:#111;
+      border:1px solid rgba(255,255,255,0.35);
+      border-radius:12px;
+      padding:18px 20px;
+      margin-bottom:18px;
+      box-shadow:0 10px 24px rgba(0,0,0,.15);
+      text-align:left;
+      backdrop-filter:blur(4px);
+    }
+
+    /* stopka – koniec strony */
+    footer{background:#111;color:#fff;padding:40px 24px;text-align:center}
+  </style>
+</head>
+
+<body>
+  <!-- nagłówek -->
+  <header class="top-header">
+    <div class="inner">
+      <div class="brand">Moja Marka</div>
+      <nav>Menu · Kontakt · O nas</nav>
+    </div>
+  </header>
+
+  <!-- sekcja FAQ – 20 kafelków = dużo treści do przewijania -->
+  <section class="faq-section" id="faq">
+    <div id="faq-bg"></div>
+    <div class="faq-content">
+      <h2>Często Pytacie</h2>
+
+      <!-- 20 kafelków – wystają poza ekran -->
+      <div class="tile"><strong>Pytanie 1</strong><p>Lorem ipsum – treść zaczyna się poniżej góry obrazka.</p></div>
+      <div class="tile"><strong>Pytanie 2</strong><p>Obrazek jest dopasowany do szerokości ekranu.</p></div>
+      <div class="tile"><strong>Pytanie 3</strong><p>Góra obrazka widoczna od samej góry.</p></div>
+      <div class="tile"><strong>Pytanie 4</strong><p>Możesz przewijać myszką – tło sunie wolniej.</p></div>
+      <div class="tile"><strong>Pytanie 5</strong><p>Parallax działa do momentu zatrzymania.</p></div>
+      <div class="tile"><strong>Pytanie 6</strong><p>Kafelki przykrywają tło po zatrzymaniu.</p></div>
+      <div class="tile"><strong>Pytanie 7</strong><p>Scroll naprawdę się kończy na stopce.</p></div>
+      <div class="tile"><strong>Pytanie 8</strong><p>Brak pustych przestrzeni.</p></div>
+      <div class="tile"><strong>Pytanie 9</strong><p>Obrazek: assets/images/tlo2.png</p></div>
+      <div class="tile"><strong>Pytanie 10</strong><p>Dopasowany do szerokości ekranu.</p></div>
+      <div class="tile"><strong>Pytanie 11</strong><p>Reszta kafelków – dla długiego scrolla.</p></div>
+      <div class="tile"><strong>Pytanie 12</strong><p>Jeszcze trochę tekstu.</p></div>
+      <div class="tile"><strong>Pytanie 13</strong><p>Kolejny blok – dalej schodzi.</p></div>
+      <div class="tile"><strong>Pytanie 14</strong><p>Prawie koniec kafelków.</p></div>
+      <div class="tile"><strong>Pytanie 15</strong><p>Stopka zaraz.</p></div>
+      <div class="tile"><strong>Pytanie 16</strong><p> Jeszcze trochę.</p></div>
+      <div class="tile"><strong>Pytanie 17</strong><p>Już prawie.</p></div>
+      <div class="tile"><strong>Pytanie 18</strong><p>Na prawdę koniec.</p></div>
+      <div class="tile"><strong>Pytanie 19</strong><p>Ostatni blok.</p></div>
+      <div class="tile"><strong>Pytanie 20</strong><p>Koniec kafelków – stopka zaraz.</p></div>
+    </div>
+  </section>
+
+  <!-- STOPKA – koniec strony -->
+  <footer style="background:#111;color:#fff;padding:40px 24px;text-align:center">
+    <p>© 2025 Moja firma – wszystkie prawa zastrzeżone.</p>
+  </footer>
+
+  <!-- JS: mechanizm parallax + stop -->
+  <script>
+    (function(){
+      const topHeader = document.querySelector('.top-header');
+      const faqSection = document.getElementById('faq');
+      const faqBg = document.getElementById('faq-bg');
+      if(!topHeader||!faqSection||!faqBg)return;
+
+      let bgIsFixedPreserved=false;
+      function update(){
+        const sectionRect=faqSection.getBoundingClientRect();
+        const headerRect=topHeader.getBoundingClientRect();
+        const headerGone=headerRect.bottom<=0;
+
+        if(headerGone&&!bgIsFixedPreserved){
+          const rect=faqBg.getBoundingClientRect();
+          faqBg.classList.add('fixed');
+          faqBg.style.position='fixed';
+          faqBg.style.top=rect.top+'px';
+          faqBg.style.left=rect.left+'px';
+          faqBg.style.width=rect.width+'px';
+          faqBg.style.height=rect.height+'px';
+          faqBg.style.transform='translateZ(0)';
+          bgIsFixedPreserved=true;
+        }else if(!headerGone&&bgIsFixedPreserved){
+          faqBg.classList.remove('fixed');
+          faqBg.style.position='';
+          faqBg.style.top='';
+          faqBg.style.left='';
+          faqBg.style.width='';
+          faqBg.style.height='';
+          faqBg.style.transform='';
+          bgIsFixedPreserved=false;
+        }
+      }
+      let ticking=false;
+      function onScroll(){
+        if(!ticking){requestAnimationFrame(function(){update();ticking=false;});ticking=true;}
+      }
+      update();
+      window.addEventListener('scroll',onScroll,{passive:true});
+      window.addEventListener('resize',onScroll);
+    })();
+  </script>
+</body>
+</html>

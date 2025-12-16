@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Treść ustawiona poniżej góry obrazka</title>
+<style>
+  /* Reset i podstawy */
+  html,body{height:100%;margin:0;padding:0;font-family:system-ui,Arial;background:#111;color:#111}
+  *,*::before,*::after{box-sizing:border-box}
+
+  /* Nagłówek przed tłem */
+  .top-header{
+    position: relative;
+    width:100%;
+    height:96px;
+    background: linear-gradient(180deg,#0b0b0b,#141414);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index: 10;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  }
+  .top-header .inner{ max-width:1200px; width:100%; padding:0 16px; display:flex; align-items:center; justify-content:space-between; }
+  .top-header .brand{ font-weight:700; letter-spacing:0.2px }
+
+  /* FAQ z tłem (zamiast hero) */
+  .faq-section {
+    --faq-content-offset: 8vh; /* <-- tu ustawiasz jak daleko od góry obrazka ma być treść */
+    position: relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:flex-start; /* treść zaczyna się u góry, ale przesuniemy ją paddingiem */
+    justify-content:center;
+    color:#fff;
+    text-align:center;
+    padding:0 24px 24px;
+    overflow: visible;
+    background: transparent;
+  }
+
+  /* Warstwa tła wewnątrz sekcji FAQ */
+  #faq-bg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image: url('assets/images/tlo2.png'); /* Twoje tło */
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:top center;
+    z-index:0;
+    pointer-events:none;
+    transition: opacity .18s linear;
+  }
+  #faq-bg.fixed { position: fixed !important; z-index: 0; }
+
+  /* Treść FAQ ustawiona nieco niżej niż góra obrazka */
+  .faq-content {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    width: 100%;
+    padding-top: var(--faq-content-offset); /* klucz: odsunięcie od góry obrazka */
+    box-sizing: border-box;
+  }
+
+  /* Przykładowe kafelki wewnątrz sekcji FAQ */
+  .faq-section .tile{
+    background:#ffffff;
+    color:#111;
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:18px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.10);
+    border:1px solid rgba(0,0,0,0.06);
+    text-align:left;
+  }
+
+  /* Prostsza zawartość strony poniżej */
+  .site { position: relative; z-index: 6; max-width:1200px; margin:0 auto; padding:24px 16px 60px; background:transparent }
+  .content { color:#fff; max-width:900px; margin:0 auto; }
+
+  @media (max-width:980px){
+    .faq-section { --faq-content-offset: 6vh; }
+    .site{ padding:20px 12px }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAGŁÓWEK PRZED TŁEM -->
+  <header class="top-header" id="topHeader">
+    <div class="inner">
+      <div class="brand">Moja Marka</div>
+      <nav style="opacity:.9">Menu · Kontakt · O nas</nav>
+    </div>
+  </header>
+
+  <!-- SEKCJA FAQ z tłem (zamiast hero) -->
+  <section class="faq-section" id="faq">
+    <div id="faq-bg" aria-hidden="true"></div>
+
+    <!-- TREŚĆ ustawiona nieco niżej niż góra obrazka -->
+    <div class="faq-content" aria-hidden="false">
+      <div class="tile"><strong>Przykład 1</strong><p style="margin-top:8px">Lorem ipsum dolor sit amet — ta treść zaczyna się poniżej góry obrazka.</p></div>
+      <div class="tile"><strong>Przykład 2</strong><p style="margin-top:8px">Consectetur adipiscing elit — zmień --faq-content-offset aby dopasować pozycję.</p></div>
+      <div class="tile"><strong>Przykład 3</strong><p style="margin-top:8px">Sed do eiusmod tempor — responsywne ustawienia w media query.</p></div>
+    </div>
+  </section>
+
+  <!-- GŁÓWNA ZAWARTOŚĆ -->
+  <div class="site" id="site">
+    <div class="content">
+      <h1 style="margin-top:0;color:#fff">Dalsza treść strony</h1>
+
+      <div class="tile"><strong>Więcej 1</strong><p style="margin-top:8px">Dodatkowa zawartość poniżej sekcji FAQ.</p></div>
+      <div class="tile"><strong>Więcej 2</strong><p style="margin-top:8px">Kolejny blok informacyjny.</p></div>
+
+      <div style="height:900px"></div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const topHeader = document.getElementById('topHeader');
+  const faqSection = document.getElementById('faq');
+  const faqBg = document.getElementById('faq-bg');
+
+  if(!topHeader || !faqSection || !faqBg) return;
+
+  let bgIsFixedPreserved = false;
+
+  function update() {
+    const sectionRect = faqSection.getBoundingClientRect();
+    const headerRect = topHeader.getBoundingClientRect();
+    const headerGone = headerRect.bottom <= 0;
+
+    if(headerGone && !bgIsFixedPreserved) {
+      const rect = faqBg.getBoundingClientRect();
+      faqBg.classList.add('fixed');
+      faqBg.style.position = 'fixed';
+      faqBg.style.top = rect.top + 'px';
+      faqBg.style.left = rect.left + 'px';
+      faqBg.style.width = rect.width + 'px';
+      faqBg.style.height = rect.height + 'px';
+      faqBg.style.transform = 'translateZ(0)';
+      bgIsFixedPreserved = true;
+    } else if(!headerGone && bgIsFixedPreserved) {
+      faqBg.classList.remove('fixed');
+      faqBg.style.position = '';
+      faqBg.style.top = '';
+      faqBg.style.left = '';
+      faqBg.style.width = '';
+      faqBg.style.height = '';
+      faqBg.style.transform = '';
+      bgIsFixedPreserved = false;
+    }
+  }
+
+  let ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){ update(); ticking = false; });
+      ticking = true;
+    }
+  }
+
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+})();
+</script>
+</body>
+</html>
